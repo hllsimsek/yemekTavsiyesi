@@ -6,7 +6,7 @@ class TestYemekTavsiyesi(unittest.TestCase):
         self.assertEqual(yemek_tavsiyesi("08:00"), "Kahvalti Yapiniz")
 
     def test_ogle_yemegi(self):
-        self.assertEqual(yemek_tavsiyesi("13:00"), "Ögle Yemegi Yiyiniz")
+        self.assertEqual(yemek_tavsiyesi("13:00"), "Ogle Yemegi Yiyiniz")
 
     def test_aksam_yemegi(self):
         self.assertEqual(yemek_tavsiyesi("18:00"), "Aksam Yemegi Yiyiniz")
