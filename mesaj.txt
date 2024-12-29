@@ -1,1 +1,1 @@
-Lutfen saati dogru formatta giriniz (ornek: 07:30).
+Gecersiz saat araligi girdiniz.
