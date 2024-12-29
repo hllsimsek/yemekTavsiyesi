@@ -1,24 +1,17 @@
-from datetime import datetime
-
-
 def yemek_tavsiyesi(saat):
     try:
-        # Saat formatını kontrol et
-        dt = datetime.strptime(saat, "%H:%M")
+        # Sadece saati alıyoruz, dakika kısmını atlıyoruz
+        saat = int(saat.split(":")[0])
+
+        if 7 <= saat < 12:
+            return "Kahvalti Yapiniz"
+        elif 12 <= saat < 15:
+            return "Ogle Yemegi Yiyiniz"
+        elif 16 <= saat < 20:
+            return "Aksam Yemegi Yiyiniz"
+        elif 21 <= saat <= 23 or 0 <= saat < 7:
+            return "Sadece Meyve ya da Kuruyemis Yemelisiniz"
+        else:
+            return "Gecersiz saat araligi girdiniz."
     except ValueError:
         return "Lutfen saati dogru formatta giriniz (ornek: 07:30)."
-
-    # Saat dilimlerine göre yemek tavsiyesi
-    if not (0 <= dt.hour < 24 and 0 <= dt.minute < 60):
-        return "Gecersiz saat araligi girdiniz."
-
-    if "06:00" <= saat < "10:00":
-        return "Kahvalti Yapiniz"
-    elif "12:00" <= saat < "15:00":
-        return "Ogle Yemegi Yiyiniz"
-    elif "17:00" <= saat < "21:00":
-        return "Aksam Yemegi Yiyiniz"
-    elif "21:00" <= saat < "23:59":
-        return "Sadece Meyve ya da Kuruyemis Yemelisiniz"
-    else:
-        return "Gecersiz saat araligi girdiniz."

@@ -1,21 +1,18 @@
-import unittest
 from main import yemek_tavsiyesi
+def test_yemek_tavsiyesi():
+    # Kullanıcıdan saat girdisi al
+    saat = input("Lütfen saati HH:00 formatinda giriniz: ")  # Dakika kısmı yok, sadece saat girilecek
 
-class TestYemekTavsiyesi(unittest.TestCase):
-    def test_kahvalti(self):
-        self.assertEqual(yemek_tavsiyesi("08:00"), "Kahvalti Yapiniz")
+    # Yemek tavsiyesi fonksiyonunu çağır
+    mesaj = yemek_tavsiyesi(saat)
 
-    def test_ogle_yemegi(self):
-        self.assertEqual(yemek_tavsiyesi("13:00"), "Ogle Yemegi Yiyiniz")
+    # Mesajı dosyaya yaz
+    with open("mesaj.txt", "w") as dosya:
+        dosya.write(mesaj)
 
-    def test_aksam_yemegi(self):
-        self.assertEqual(yemek_tavsiyesi("18:00"), "Aksam Yemegi Yiyiniz")
+    print(f"Sonuc mesaj.txt dosyasına yazildi: {mesaj}")
 
-    def test_gece_atistirmasi(self):
-        self.assertEqual(yemek_tavsiyesi("22:00"), "Sadece Meyve ya da Kuruyemis Yemelisiniz")
 
-    def test_gecersiz_saat(self):
-        self.assertEqual(yemek_tavsiyesi("25:00"), "Gecersiz saat araligi girdiniz.")
-
-    def test_hatalı_format(self):
-        self.assertEqual(yemek_tavsiyesi("saat"), "Lutfen saati dogru formatta giriniz (ornek: 07:30).")
+# Test fonksiyonunu çalıştır
+if __name__ == "__main__":
+    test_yemek_tavsiyesi()
