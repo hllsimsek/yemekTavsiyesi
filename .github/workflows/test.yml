@@ -38,3 +38,6 @@ jobs:
       env:
         PYTHONIOENCODING: utf-8
       run: |
+    - name: Run tests
+      run: |
+        pytest test_yemek_tavsiyesi.py
