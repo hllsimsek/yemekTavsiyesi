@@ -37,3 +37,4 @@ jobs:
     - name: Test with pytest
       env:
         PYTHONIOENCODING: utf-8
+      run: |
