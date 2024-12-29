@@ -3,12 +3,15 @@ from datetime import datetime
 
 def yemek_tavsiyesi(saat):
     try:
-        # saat formatını kontrol et
-        datetime.strptime(saat, "%H:%M")
+        # Saat formatını kontrol et
+        dt = datetime.strptime(saat, "%H:%M")
     except ValueError:
         return "Lutfen saati dogru formatta giriniz (ornek: 07:30)."
 
     # Saat dilimlerine göre yemek tavsiyesi
+    if not (0 <= dt.hour < 24 and 0 <= dt.minute < 60):
+        return "Gecersiz saat araligi girdiniz."
+
     if "06:00" <= saat < "10:00":
         return "Kahvalti Yapiniz"
     elif "12:00" <= saat < "15:00":
